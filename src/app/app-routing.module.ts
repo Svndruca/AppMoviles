@@ -1,27 +1,44 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
+  },
+  {
+    path: 'estudiante',
+    loadChildren: () => import('./estudiante/estudiante.module').then((m) => m.EstudiantePageModule),
+  },
+  {
+    path: 'escanear-qr',
+    loadChildren: () => import('./escanear-qr/escanear-qr.module').then((m) => m.EscanearQRPageModule),
   },
   {
     path: '',
-    redirectTo: 'login', // Redirige a la página de inicio de sesión
-    pathMatch: 'full'
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+ 
+  {
+    path: 'cambio-contrasena',
+    loadChildren: () => import('./cambio-contrasena/cambio-contrasena.module').then( m => m.CambioContrasenaPageModule)
   },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
+
+
+
+
+
 
